@@ -1,11 +1,12 @@
-import { SideNavBar } from "../../components/SideNavBar/SideNavBar"
+import React from "react";
+import { DashboardContainer, SideNavBar } from "../../components";
 import "./Dashboard.scss"
 
 export const Dashboard: React.FC<{}> = () => {
   return (
     <div className="Dashboard">
-      <h1>Dashboard</h1>
       <SideNavBar/>
+      <DashboardContainer/>
     </div>
   );
 }
