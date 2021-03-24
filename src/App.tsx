@@ -5,6 +5,7 @@ import { ROUTE } from "./routes/routes";
 import { LandingPage, LoginForm, Dashboard, PageNotFound } from "./pages";
 
 export const App: React.FC<{}> = () => {
+
   return (
     <Router>
       <div className="App">
