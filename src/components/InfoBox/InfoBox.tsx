@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./InfoBox.scss" 
 interface InfoBoxParams {
   text: string,
   data: number | string
