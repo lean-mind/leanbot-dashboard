@@ -8,10 +8,10 @@ export default class ApiCalls {
     return await axios.get(Endpoints.coffeeBreaks).then(getData)
   }
 
-  async getUserCoffeeBreaks(user: string) {
+  async getUserCoffeeBreaks(id: string) {
     return await axios.get(Endpoints.coffeeBreaks, {
       params: {
-        userId: user
+        userId: id
       }
     }).then(getData)
   }
@@ -20,12 +20,16 @@ export default class ApiCalls {
     return await axios.get(Endpoints.gratitudeMessages).then(getData)
   }
 
-  async getUserGratitudeMessages(user: string) {
+  async getUserGratitudeMessages(id: string) {
     return await axios.get(Endpoints.gratitudeMessages, {
       params: {
-        userId: user
+        userId: id
       }
     }).then(getData)
+  }
+
+  async getUserName(id: string) {
+    return await axios.get(`${Endpoints.userInfo}/${id}`).then((response: any) => response.data.name)
   }
 
 }

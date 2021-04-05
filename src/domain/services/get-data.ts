@@ -33,8 +33,8 @@ export const getInteractions = async (user: string): Promise<string> => {
                               .concat(userCoffeeBreaks)
                               .map(getInvolvedUsers)
                               .flat()
-                              .filter((element: string) => element !== user)
-  
+                              .filter((interactedUser: string) => interactedUser !== user)
+
   const userInteractionCounts = {}
   interactedUserList.forEach((user: string) => {
     const noUserCount = !userInteractionCounts[user]
@@ -47,8 +47,8 @@ export const getInteractions = async (user: string): Promise<string> => {
                                   .reduce((a, b) => {
                                     return userInteractionCounts[a] > userInteractionCounts[b] ? a : b
                                   })
-  // Get name del usuario que se devuelve
-  return maxInteractionsUserId 
+
+  return await apiCalls.getUserName(maxInteractionsUserId)
 }
 
 const getInvolvedUsers = (element: any): Array<string>  => {
