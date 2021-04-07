@@ -32,4 +32,11 @@ export default class ApiCalls {
     return await axios.get(`${Endpoints.userInfo}/${id}`).then((response: any) => response.data.name)
   }
 
+  async verifyAuthToken(token: string) {
+    return await axios.post(Endpoints.auth, {},{
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+  }
 }
