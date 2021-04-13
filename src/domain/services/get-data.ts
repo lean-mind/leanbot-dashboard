@@ -35,12 +35,15 @@ export const getInteractions = async (user: string): Promise<string> => {
                               .flat()
                               .filter((interactedUser: string) => interactedUser !== user)
 
+  if (interactedUserList.length == 0) {
+    return "Nadie"
+  }
   const userInteractionCounts = {}
   interactedUserList.forEach((user: string) => {
     const noUserCount = !userInteractionCounts[user]
     if (noUserCount) {
       userInteractionCounts[user] = 0
-    } 
+    }
     userInteractionCounts[user]++
   })
   const maxInteractionsUserId = Object.keys(userInteractionCounts)
@@ -52,5 +55,5 @@ export const getInteractions = async (user: string): Promise<string> => {
 }
 
 const getInvolvedUsers = (element: any): Array<string>  => {
-  return [element.sender.id, element.recipient.id]  
+  return [element.sender.id, element.recipient.id]
 }
