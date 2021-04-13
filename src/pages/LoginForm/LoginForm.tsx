@@ -1,22 +1,11 @@
-import React from "react";
-import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
-import { verifyAuthToken } from "../../domain/services/auth"
+import React from "react"
+import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login"
 
 interface LoginProps {
-  changeAuth: (value: boolean) => void
+  successGoogleResponse: (response: GoogleLoginResponse | GoogleLoginResponseOffline) => void
 }
 
-export const LoginForm: React.FC<LoginProps> = ({ changeAuth }) => {
-
-  const successGoogleResponse = async (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-    if (!response.code) {
-      const token = (response as GoogleLoginResponse).getAuthResponse().id_token
-      console.log(response)
-      await verifyAuthToken(token).then(() => changeAuth(true))
-    } else {
-      console.log('chacho, petó esto');
-    }
-  }
+export const LoginForm: React.FC<LoginProps> = ({ successGoogleResponse }) => {
 
   const failureGoogleResponse = (response:any) => {
     console.log(`Google login failed ${response}`);
@@ -29,7 +18,6 @@ export const LoginForm: React.FC<LoginProps> = ({ changeAuth }) => {
               buttonText="Login"
               onSuccess={successGoogleResponse}
               onFailure={failureGoogleResponse}
-              isSignedIn={true}
               cookiePolicy={'single_host_origin'}
             /> 
     </div>

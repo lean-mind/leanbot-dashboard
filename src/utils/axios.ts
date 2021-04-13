@@ -39,4 +39,15 @@ export default class ApiCalls {
       }
     })
   }
+
+  async verifySignUpTokens(token: string, id: string) {
+    return await axios.post(Endpoints.signUp, {}, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      params: {
+        id
+      }
+    })
+  }
 }
